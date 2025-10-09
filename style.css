@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
+body {
+	margin: 0;
+	font-family: "Inter", sans-serif;
+	background: radial-gradient(circle at top left, #0d1117, #0b0b0b 70%);
+	color: #eaeaea;
+	overflow-x: hidden;
+}
+
+.container {
+	max-width: 900px;
+	margin: auto;
+	padding: 40px 20px;
+}
+
+header {
+	text-align: center;
+	margin-bottom: 50px;
+	padding-top: 20px;
+}
+
+h1 {
+	font-size: 2.6rem;
+	color: #00b3ff;
+	letter-spacing: 1px;
+}
+
+p {
+	line-height: 1.7;
+	font-size: 1rem;
+	color: #cfcfcf;
+}
+
+h2 {
+	font-size: 1.6rem;
+	color: #00b3ff;
+	margin-top: 40px;
+}
+
+a {
+	text-decoration: none;
+	color: #00b3ff;
+	transition: 0.3s;
+}
+
+a:hover {
+	color: #64c3ff;
+	text-shadow: 0 0 10px #00b3ff;
+}
+
+.skills {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 15px;
+}
+
+.skill {
+	background: rgba(255, 255, 255, 0.05);
+	padding: 10px 14px;
+	border-radius: 6px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	font-size: 0.9rem;
+	transition: background 0.3s, transform 0.2s;
+}
+
+.skill:hover {
+	background: #00b3ff;
+	color: #000;
+	transform: translateY(-3px);
+}
+
+.project {
+	background: rgba(255, 255, 255, 0.04);
+	padding: 20px;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 0 15px rgba(0, 179, 255, 0.2);
+}
+
+footer {
+	text-align: center;
+	margin-top: 40px;
+	font-size: 0.9rem;
+	color: #777;
+}
+
+.fade-in {
+	opacity: 0;
+	animation: fadeIn 1s forwards;
+}
+
+.delay {
+	animation-delay: 0.3s;
+}
+.delay2 {
+	animation-delay: 0.6s;
+}
+.delay3 {
+	animation-delay: 0.9s;
+}
+.delay4 {
+	animation-delay: 1.2s;
+}
+.delay5 {
+	animation-delay: 1.5s;
+}
+.delay6 {
+	animation-delay: 1.8s;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(15px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.socials a {
+	margin: 0 8px;
+}
+
+section {
+	margin-bottom: 30px;
+}
+
+.profile-icon img {
+	width: 40px;
+	height: 40px;
+	object-fit: contain;
+}
