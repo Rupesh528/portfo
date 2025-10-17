@@ -544,6 +544,82 @@
 				z-index: 1;
 			}
 
+			/* Tech Stack Styles - Now with simple link styling */
+			.tech-stack {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				margin-top: 15px;
+			}
+
+			.tech-badge {
+				color: #cfcfcf;
+				font-size: 0.95rem;
+				transition: all 0.3s;
+			}
+
+			.tech-badge:hover {
+				color: #00d4ff;
+			}
+
+			/* Project Links - Now with badge styling */
+			.project-links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+				margin-top: 15px;
+			}
+
+			.project-link {
+				background: linear-gradient(
+					135deg,
+					rgba(0, 179, 255, 0.15),
+					rgba(0, 179, 255, 0.08)
+				);
+				border: 1px solid rgba(0, 179, 255, 0.35);
+				color: #00d4ff;
+				padding: 8px 16px;
+				border-radius: 20px;
+				font-size: 0.88rem;
+				font-weight: 500;
+				letter-spacing: 0.5px;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+				box-shadow: 0 2px 8px rgba(0, 179, 255, 0.1);
+				text-decoration: none;
+				display: inline-block;
+			}
+
+			.project-link::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					90deg,
+					transparent,
+					rgba(255, 255, 255, 0.2),
+					transparent
+				);
+				transition: left 0.5s;
+			}
+
+			.project-link:hover::before {
+				left: 100%;
+			}
+
+			.project-link:hover {
+				background: linear-gradient(135deg, #00b3ff, #00d4ff);
+				color: #000;
+				border-color: #00d4ff;
+				box-shadow: 0 0 20px rgba(0, 179, 255, 0.6),
+					0 0 40px rgba(0, 179, 255, 0.3);
+				transform: translateY(-3px) scale(1.08);
+			}
+
 			@media (max-width: 768px) {
 				.page-border {
 					top: 10px;
@@ -569,6 +645,11 @@
 					width: 40px;
 					height: 40px;
 					object-fit: contain;
+				}
+
+				.project-link {
+					font-size: 0.85rem;
+					padding: 7px 14px;
 				}
 			}
 		</style>
@@ -667,7 +748,7 @@
 							<img src="assets/images/leetcode.png" alt="LeetCode" />
 						</div>
 						<div class="profile-name">LeetCode</div>
-						<div class="profile-stat">300+ solved</div>
+						<div class="profile-stat">Rupesh528</div>
 					</div>
 
 					<div
@@ -678,7 +759,7 @@
 							<img src="assets/images/codechef.png" alt="CodeChef" />
 						</div>
 						<div class="profile-name">CodeChef</div>
-						<div class="profile-stat">Active</div>
+						<div class="profile-stat">sahanirupesh528</div>
 					</div>
 
 					<div
@@ -689,7 +770,7 @@
 							<img src="assets/images/codeforces.png" alt="CodeForces" />
 						</div>
 						<div class="profile-name">CodeForces</div>
-						<div class="profile-stat">200+ solved</div>
+						<div class="profile-stat">Rupesh_7</div>
 					</div>
 
 					<div
@@ -700,7 +781,7 @@
 							<img src="assets/images/github.png" alt="GitHub" />
 						</div>
 						<div class="profile-name">GitHub</div>
-						<div class="profile-stat">Open Source</div>
+						<div class="profile-stat">Rupesh528</div>
 					</div>
 				</div>
 			</section>
@@ -711,70 +792,142 @@
 				<div class="project">
 					<h3>ContestBuddy App</h3>
 					<p>
-						Competitive programming reminder app with streak tracking,
-						reminders, and analytics.
+						A competitive programming reminder app that tracks contests from
+						multiple platforms like Codeforces, CodeChef, and LeetCode. Includes
+						streak maintenance, custom reminders, performance analytics, and
+						motivational streak tracking.
 					</p>
-					<p>
-						<a href="https://github.com/Rupesh528/ContestBuddy" target="_blank"
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">Flutter</span> •
+						<span class="tech-badge">Python</span> •
+						<span class="tech-badge">MongoDB</span> •
+						<span class="tech-badge">Android Studio</span>
+					</div>
+					<div class="project-links">
+						<a
+							href="https://github.com/Rupesh528/ContestBuddy"
+							target="_blank"
+							class="project-link"
 							>GitHub</a
 						>
-						•
-						<a href="https://rupesh528.github.io/ContestBuddy/" target="_blank"
+						<a
+							href="https://rupesh528.github.io/ContestBuddy/"
+							target="_blank"
+							class="project-link"
 							>Live</a
 						>
-					</p>
+					</div>
 				</div>
 
 				<div class="project">
 					<h3>Flight Price Prediction</h3>
 					<p>
-						Machine learning-based flight fare predictor with high accuracy and
-						clean UI.
+						Machine learning-based web app that predicts flight fares with 85%
+						accuracy. Features a clean Flask UI, data preprocessing (cleaning,
+						encoding, scaling), and performance metrics using MAE, RMSE, and R²
+						scores.
 					</p>
-					<p>
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">Python</span> •
+						<span class="tech-badge">Flask</span> •
+						<span class="tech-badge">Random Forest</span> •
+						<span class="tech-badge">Machine Learning</span>
+					</div>
+					<div class="project-links">
 						<a
 							href="https://github.com/Rupesh528/Flight-Price-Prediction"
 							target="_blank"
+							class="project-link"
 							>GitHub</a
 						>
-						•
-						<a href="https://my-ml-app-5nl6.onrender.com" target="_blank"
+						<a
+							href="https://my-ml-app-5nl6.onrender.com"
+							target="_blank"
+							class="project-link"
 							>Live</a
 						>
+					</div>
+				</div>
+
+				<div class="project">
+					<h3>Sentiment Analysis using Transformers</h3>
+					<p>
+						Built a sentiment classification model using pre-trained BERT
+						transformers with 92% accuracy. Fine-tuned models using PyTorch and
+						HuggingFace libraries with an advanced NLP preprocessing pipeline.
 					</p>
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">Python</span> •
+						<span class="tech-badge">PyTorch</span> •
+						<span class="tech-badge">HuggingFace</span> •
+						<span class="tech-badge">BERT</span> •
+						<span class="tech-badge">NLP</span>
+					</div>
+					<div class="project-links">
+						<a
+							href="https://github.com/Rupesh528/Sentiment-analysis"
+							target="_blank"
+							class="project-link"
+							>GitHub</a
+						>
+					</div>
 				</div>
 
 				<div class="project">
 					<h3>Custom Shell (C++)</h3>
 					<p>
-						Optimized Linux shell built using C++ OOP, templates, and STL
-						supporting concurrent processes.
+						A custom Linux shell built using C++ OOP concepts, STL, and
+						templates. Optimized for concurrent process handling, system command
+						execution, and modular scalability for future extensions.
 					</p>
-					<p>
-						<a href="https://github.com/Rupesh528/custom-shell" target="_blank"
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">C++</span> •
+						<span class="tech-badge">STL</span> •
+						<span class="tech-badge">OOP</span> •
+						<span class="tech-badge">Linux</span>
+					</div>
+					<div class="project-links">
+						<a
+							href="https://github.com/Rupesh528/custom-shell"
+							target="_blank"
+							class="project-link"
 							>GitHub</a
 						>
-						•
 						<a
 							href="https://redesigned-guide-wpjgvj76q5f95x7-7681.app.github.dev/"
 							target="_blank"
+							class="project-link"
 							>Live</a
 						>
-					</p>
+					</div>
 				</div>
 
 				<div class="project">
 					<h3>Contact Search List</h3>
 					<p>
-						MERN-based contact manager with regex search and real-time updates.
+						A MERN-based contact management app with regex search and real-time
+						updates. Allows adding, editing, and deleting contacts with a
+						responsive, modern interface.
 					</p>
-					<p>
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">MongoDB</span> •
+						<span class="tech-badge">Express.js</span> •
+						<span class="tech-badge">React.js</span> •
+						<span class="tech-badge">Node.js</span>
+					</div>
+					<div class="project-links">
 						<a
 							href="https://github.com/Rupesh528/Contact-Search-List"
 							target="_blank"
+							class="project-link"
 							>GitHub</a
 						>
-					</p>
+					</div>
 				</div>
 			</section>
 
