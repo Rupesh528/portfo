@@ -15,7 +15,7 @@
 
 			body {
 				font-family: "Inter", sans-serif;
-				background: #000000;
+				background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
 				color: #eaeaea;
 				overflow-x: hidden;
 				min-height: 100vh;
@@ -34,7 +34,8 @@
 				z-index: 9999;
 				box-shadow: inset 0 0 60px rgba(0, 179, 255, 0.03),
 					0 0 60px rgba(0, 179, 255, 0.03);
-				animation: borderPulse 4s ease-in-out infinite;
+				animation: borderPulse 4s ease-in-out infinite,
+					glow 3s ease-in-out infinite;
 			}
 
 			@keyframes borderPulse {
@@ -155,18 +156,40 @@
 
 			.socials a {
 				padding: 10px 20px;
-				/* background: #00d4ff; */
 				background: rgba(0, 179, 255, 0.1);
 				border: 1px solid rgba(0, 179, 255, 0.3);
 				border-radius: 25px;
 				font-size: 0.95rem;
-				transition: all 0.3s;
+				transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+				position: relative;
+				overflow: hidden;
+			}
+
+			.socials a::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					90deg,
+					transparent,
+					rgba(0, 179, 255, 0.2),
+					transparent
+				);
+				transition: left 0.5s;
+			}
+
+			.socials a:hover::before {
+				left: 100%;
 			}
 
 			.socials a:hover {
 				background: rgba(0, 179, 255, 0.2);
 				transform: translateY(-2px);
 				box-shadow: 0 5px 20px rgba(0, 179, 255, 0.3);
+				animation: pulse 2s infinite;
 			}
 
 			.skills {
@@ -280,45 +303,66 @@
 
 			.fade-in {
 				opacity: 0;
-				animation: fadeIn 1s forwards;
+				transform: translateY(30px);
+				animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 			}
 
 			.delay {
-				animation-delay: 0.2s;
+				animation-delay: 0.1s;
 			}
 			.delay2 {
-				animation-delay: 0.4s;
+				animation-delay: 0.2s;
 			}
 			.delay3 {
-				animation-delay: 0.6s;
+				animation-delay: 0.3s;
 			}
 			.delay4 {
-				animation-delay: 0.8s;
+				animation-delay: 0.4s;
 			}
 			.delay5 {
-				animation-delay: 1s;
+				animation-delay: 0.5s;
 			}
 			.delay6 {
-				animation-delay: 1.2s;
+				animation-delay: 0.6s;
 			}
 			.delay7 {
-				animation-delay: 1.4s;
+				animation-delay: 0.7s;
 			}
 			.delay8 {
-				animation-delay: 1.6s;
+				animation-delay: 0.8s;
 			}
 			.delay9 {
-				animation-delay: 1.8s;
+				animation-delay: 0.9s;
 			}
 
-			@keyframes fadeIn {
+			@keyframes fadeInUp {
 				from {
 					opacity: 0;
-					transform: translateY(20px);
+					transform: translateY(30px);
 				}
 				to {
 					opacity: 1;
 					transform: translateY(0);
+				}
+			}
+
+			@keyframes pulse {
+				0%,
+				100% {
+					transform: scale(1);
+				}
+				50% {
+					transform: scale(1.05);
+				}
+			}
+
+			@keyframes glow {
+				0%,
+				100% {
+					box-shadow: 0 0 20px rgba(0, 179, 255, 0.3);
+				}
+				50% {
+					box-shadow: 0 0 30px rgba(0, 179, 255, 0.6);
 				}
 			}
 
@@ -394,6 +438,7 @@
 				grid-auto-flow: column;
 				grid-gap: 4px;
 				margin: 15px 0;
+				justify-content: flex-end;
 			}
 
 			.heatmap-day {
@@ -652,6 +697,82 @@
 					font-size: 0.85rem;
 					padding: 7px 14px;
 				}
+
+				.skills {
+					grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+					gap: 10px;
+				}
+
+				.skill {
+					padding: 10px 15px;
+					font-size: 0.9rem;
+				}
+
+				.project {
+					padding: 20px;
+				}
+
+				.project h3 {
+					font-size: 1.2rem;
+				}
+
+				.heatmap-wrapper {
+					padding: 15px;
+					overflow-x: auto;
+					-webkit-overflow-scrolling: touch;
+				}
+
+				.heatmap-grid {
+					grid-gap: 3px;
+				}
+
+				.heatmap-day {
+					width: 12px;
+					height: 12px;
+				}
+
+				.legend-box {
+					width: 12px;
+					height: 12px;
+				}
+			}
+
+			@media (max-width: 480px) {
+				h1 {
+					font-size: 2rem;
+				}
+
+				.subtitle {
+					font-size: 1.1rem;
+				}
+
+				.socials {
+					flex-direction: column;
+					align-items: center;
+					gap: 15px;
+				}
+
+				.socials a {
+					width: 100%;
+					max-width: 200px;
+					text-align: center;
+				}
+
+				.coding-profiles {
+					grid-template-columns: 1fr;
+				}
+
+				.profile-card {
+					padding: 20px;
+				}
+
+				.work-status {
+					padding: 20px;
+				}
+
+				.work-status p {
+					font-size: 1.1rem;
+				}
 			}
 		</style>
 	</head>
@@ -789,6 +910,41 @@
 
 			<section class="fade-in delay8">
 				<h2>Projects</h2>
+
+				<div class="project">
+					<h3>Online Auction App</h3>
+					<p>
+						A full-stack web application for conducting online auctions with
+						user authentication, real-time bidding, and comprehensive dashboard
+						analytics. Features secure JWT-based login, auction creation and
+						management, bidding history, dark/light theme toggle, and responsive
+						design.
+					</p>
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">React 19</span> •
+						<span class="tech-badge">TypeScript</span> •
+						<span class="tech-badge">Node.js</span> •
+						<span class="tech-badge">Express.js</span> •
+						<span class="tech-badge">MongoDB</span> •
+						<span class="tech-badge">JWT</span> •
+						<span class="tech-badge">Bootstrap 5</span>
+					</div>
+					<div class="project-links">
+						<a
+							href="https://github.com/Rupesh528/online-auction-system"
+							target="_blank"
+							class="project-link"
+							>GitHub</a
+						>
+						<a
+							href="https://online-auction-system-mpt8mj3bj-rupesh528s-projects.vercel.app/"
+							target="_blank"
+							class="project-link"
+							>Live</a
+						>
+					</div>
+				</div>
 
 				<div class="project">
 					<h3>ContestBuddy App</h3>
@@ -999,7 +1155,12 @@
 					day.addEventListener("mouseenter", (e) => {
 						const date = e.target.getAttribute("data-date");
 						const count = e.target.getAttribute("data-count");
-						showTooltip(e, `${date}: ${count} solved`);
+						const containerId = e.target
+							.closest(".heatmap-wrapper")
+							.querySelector("div").id;
+						const activityType =
+							containerId === "codeforces-heatmap" ? "solved" : "activities";
+						showTooltip(e, `${date}: ${count} ${activityType}`);
 					});
 
 					day.addEventListener("mouseleave", hideTooltip);
