@@ -1,217 +1,1228 @@
-%-------------------------
-% Resume in Latex
-% Author : Jake Gutierrez
-% Based off of: https://github.com/sb2nov/resume
-% License : MIT
-%------------------------
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Rupesh Sahani | Portfolio</title>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
 
-\documentclass[letterpaper,11pt]{article}
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
-\usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
-\usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-\usepackage{fancyhdr}
-\usepackage[english]{babel}
-\usepackage{tabularx}
-\usepackage{graphicx}
-\input{glyphtounicode}
+			body {
+				font-family: "Inter", sans-serif;
+				background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+				color: #eaeaea;
+				overflow-x: hidden;
+				min-height: 100vh;
+				padding: 20px;
+			}
 
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
+			.page-border {
+				position: fixed;
+				top: 15px;
+				left: 15px;
+				right: 15px;
+				bottom: 15px;
+				border: 2px solid rgba(0, 179, 255, 0.3);
+				border-radius: 30px;
+				pointer-events: none;
+				z-index: 9999;
+				box-shadow: inset 0 0 60px rgba(0, 179, 255, 0.03),
+					0 0 60px rgba(0, 179, 255, 0.03);
+				animation: borderPulse 4s ease-in-out infinite,
+					glow 3s ease-in-out infinite;
+			}
 
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+			@keyframes borderPulse {
+				0%,
+				100% {
+					border-color: rgba(0, 179, 255, 0.3);
+					box-shadow: inset 0 0 60px rgba(0, 179, 255, 0.03),
+						0 0 60px rgba(0, 179, 255, 0.03);
+				}
+				50% {
+					border-color: rgba(0, 179, 255, 0.5);
+					box-shadow: inset 0 0 80px rgba(0, 179, 255, 0.05),
+						0 0 80px rgba(0, 179, 255, 0.05);
+				}
+			}
 
-\urlstyle{same}
+			.background-gradient {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: radial-gradient(
+						circle at 20% 20%,
+						rgba(0, 179, 255, 0.08) 0%,
+						transparent 50%
+					),
+					radial-gradient(
+						circle at 80% 80%,
+						rgba(0, 179, 255, 0.08) 0%,
+						transparent 50%
+					);
+				pointer-events: none;
+				z-index: 0;
+			}
 
-\raggedbottom
-\raggedright
-\setlength{\tabcolsep}{0in}
+			.container {
+				max-width: 1000px;
+				margin: auto;
+				padding: 60px 30px;
+				position: relative;
+				z-index: 1;
+			}
 
-% Sections formatting
-\titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+			header {
+				text-align: center;
+				margin-bottom: 60px;
+				padding: 40px 20px;
+				background: rgba(255, 255, 255, 0.02);
+				border-radius: 20px;
+				border: 1px solid rgba(255, 255, 255, 0.05);
+				backdrop-filter: blur(10px);
+			}
 
-% Ensure that generate pdf is machine readable/ATS parsable
-\pdfgentounicode=1
+			h1 {
+				font-size: 3.5rem;
+				background: linear-gradient(135deg, #00b3ff 0%, #00d4ff 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				letter-spacing: 2px;
+				font-weight: 700;
+				margin-bottom: 10px;
+				text-shadow: 0 0 40px rgba(0, 179, 255, 0.3);
+			}
 
-%-------------------------
-% Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
-}
+			.subtitle {
+				font-size: 1.3rem;
+				color: #b0b0b0;
+				margin-bottom: 25px;
+				font-weight: 400;
+			}
 
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
-}
+			p {
+				line-height: 1.8;
+				font-size: 1.05rem;
+				color: #cfcfcf;
+			}
 
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
-}
+			h2 {
+				font-size: 2rem;
+				color: #00b3ff;
+				margin-top: 50px;
+				margin-bottom: 25px;
+				font-weight: 600;
+				position: relative;
+				display: inline-block;
+			}
 
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & \small#2 \\
-    \end{tabular*}\vspace{-7pt}
-}
+			h2::after {
+				content: "";
+				position: absolute;
+				bottom: -8px;
+				left: 0;
+				width: 60px;
+				height: 3px;
+				background: linear-gradient(90deg, #00b3ff, transparent);
+				border-radius: 2px;
+			}
 
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+			a {
+				text-decoration: none;
+				color: #00b3ff;
+				transition: all 0.3s;
+				position: relative;
+			}
 
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+			a:hover {
+				color: #00d4ff;
+			}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+			.socials {
+				display: flex;
+				gap: 25px;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
 
-%-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			.socials a {
+				padding: 10px 20px;
+				background: rgba(0, 179, 255, 0.1);
+				border: 1px solid rgba(0, 179, 255, 0.3);
+				border-radius: 25px;
+				font-size: 0.95rem;
+				transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+				position: relative;
+				overflow: hidden;
+			}
 
+			.socials a::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					90deg,
+					transparent,
+					rgba(0, 179, 255, 0.2),
+					transparent
+				);
+				transition: left 0.5s;
+			}
 
-\begin{document}
+			.socials a:hover::before {
+				left: 100%;
+			}
 
-%----------HEADING----------
-\begin{center}
-    \textbf{\Huge \scshape Rupesh Sahani} \\ \vspace{1pt}
-    \small +91 8660368552 $|$ \href{mailto:sahanirupesh528@gmail.com}{\underline{sahanirupesh528@gmail.com}} $|$ 
-    \textbf{\href{https://www.linkedin.com/in/rupesh-sahani-g06/}{\underline{LinkedIn}}} $|$
-    \textbf{\href{https://github.com/Rupesh528}{\underline{GitHub}}} $|$
-    \textbf{\href{https://rupesh-sahani.vercel.app/}{\underline{Portfolio}}}
-\end{center}
+			.socials a:hover {
+				background: rgba(0, 179, 255, 0.2);
+				transform: translateY(-2px);
+				box-shadow: 0 5px 20px rgba(0, 179, 255, 0.3);
+				animation: pulse 2s infinite;
+			}
 
+			.skills {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+				margin-top: 20px;
+			}
 
-%-----------EDUCATION-----------
-\section{Education}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {PES University}{Bangalore, India}
-      {Master of Computer Applications (MCA)}{Dec. 2023 -- July 2025}
-      \resumeItemListStart
-        \resumeItem{CGPA: \textbf{7.71/10.0}}
-      \resumeItemListEnd
-    \resumeSubheading
-      {Karnataka University Dharwad}{Karwar, India}
-      {Bachelor of Computer Applications (BCA)}{July 2020 -- Aug. 2023}
-      \resumeItemListStart
-        \resumeItem{CGPA: \textbf{8.83/10.0}}
-      \resumeItemListEnd
-  \resumeSubHeadingListEnd
+			.skill {
+				background: linear-gradient(
+					135deg,
+					rgba(0, 179, 255, 0.1),
+					rgba(0, 179, 255, 0.05)
+				);
+				padding: 12px 18px;
+				border-radius: 8px;
+				border: 1px solid rgba(0, 179, 255, 0.2);
+				font-size: 0.95rem;
+				transition: all 0.3s;
+				position: relative;
+				overflow: hidden;
+			}
 
+			.skill::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					90deg,
+					transparent,
+					rgba(255, 255, 255, 0.1),
+					transparent
+				);
+				transition: left 0.5s;
+			}
 
-%-----------EXPERIENCE-----------
-\section{Experience}
-  \resumeSubHeadingListStart
+			.skill:hover::before {
+				left: 100%;
+			}
 
-    \resumeSubheading
-      {Robotics Engineering Intern}{Bangalore, India}
-      {KUKA Robotics \& Automation}{Feb. 2025 -- July 2025}
-      \resumeItemListStart
-        \resumeItem{Underwent hands-on training in industrial robotics and automation systems}
-        \resumeItem{Worked with KUKA robotic arms, motion planning, and control systems using KUKA.WorkVisual \& KUKA.Sim}
-        \resumeItem{Assisted in real-time simulation, calibration, and integration of robotic automation workflows}
-      \resumeItemListEnd
+			.skill:hover {
+				background: linear-gradient(
+					135deg,
+					rgba(0, 179, 255, 0.3),
+					rgba(0, 179, 255, 0.15)
+				);
+				border-color: rgba(0, 179, 255, 0.5);
+				transform: translateY(-3px);
+				box-shadow: 0 5px 15px rgba(0, 179, 255, 0.2);
+			}
 
-  \resumeSubHeadingListEnd
+			.project {
+				background: linear-gradient(
+					135deg,
+					rgba(255, 255, 255, 0.05),
+					rgba(255, 255, 255, 0.02)
+				);
+				padding: 30px;
+				border-radius: 15px;
+				margin-bottom: 25px;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				transition: all 0.4s;
+				position: relative;
+				overflow: hidden;
+			}
 
+			.project::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 4px;
+				height: 100%;
+				background: linear-gradient(180deg, #00b3ff, #00d4ff);
+				opacity: 0;
+				transition: opacity 0.4s;
+			}
 
-%-----------PROJECTS-----------
+			.project:hover::before {
+				opacity: 1;
+			}
 
+			.project:hover {
+				transform: translateX(8px);
+				box-shadow: -5px 5px 30px rgba(0, 179, 255, 0.15);
+				border-color: rgba(0, 179, 255, 0.3);
+			}
 
-\section{Projects}
-\resumeSubHeadingListStart
+			.project h3 {
+				color: #00d4ff;
+				font-size: 1.4rem;
+				margin-bottom: 12px;
+			}
 
-%==================== Online Auction App ====================%
-\resumeProjectHeading
-{\textbf{Online Auction App} $|$ \emph{React , TypeScript, Node.js, Express.js, MongoDB}}
-{\raisebox{-0.2em}{\includegraphics[height=1em]{github-logo.png}} \textbf{\underline{\href{https://github.com/Rupesh528/online-auction-system}{GitHub}}} $|$ \textbf{\underline{\href{https://online-auction-system-rupesh.vercel.app/}{Live Demo}}}}
-\resumeItemListStart
-\resumeItem{Developed a full-stack auction platform with secure \textbf{JWT}-based authentication and role-based access control}
-\resumeItem{Enabled real-time bidding using \textbf{WebSockets} and built scalable \textbf{REST APIs} for auction lifecycle management}
-\resumeItem{Implemented responsive UI, \textbf{dark/light theme}, and \textbf{Context API} state management; deployed on \textbf{Vercel + Render}}
-\resumeItemListEnd
+			.project p {
+				margin-bottom: 15px;
+			}
 
-%==================== Flight Price Prediction ====================%
-\resumeProjectHeading
-{\textbf{Flight Price Prediction} $|$ \emph{Python, Flask, Random Forest, Scikit-learn}}
-{\raisebox{-0.2em}{\includegraphics[height=1em]{github-logo.png}} \textbf{\underline{\href{https://github.com/Rupesh528/Flight-Price-Prediction}{GitHub}}} $|$ \textbf{\underline{\href{https://my-ml-app-5nl6.onrender.com}{Live Demo}}}}
-\resumeItemListStart
-\resumeItem{Built a flight-fare prediction model with \textbf{85\% accuracy} using \textbf{Random Forest Regression}}
-\resumeItem{Conducted extensive \textbf{feature engineering}, preprocessing, and model evaluation using \textbf{MAE,RMSE, R\textsuperscript{2}} metrics}
-\resumeItem{Deployed ML model via \textbf{Flask} web app with user input interface for real-time price inference}
-\resumeItemListEnd
+			footer {
+				text-align: center;
+				margin-top: 60px;
+				padding: 30px;
+				font-size: 0.95rem;
+				color: #777;
+				border-top: 1px solid rgba(255, 255, 255, 0.05);
+			}
 
-%==================== ContestBuddy App ====================%
-\resumeProjectHeading
-{\textbf{ContestBuddy App} $|$ \emph{Flutter, Dart, Python, MongoDB}}
-{\raisebox{-0.2em}{\includegraphics[height=1em]{github-logo.png}} \textbf{\underline{\href{https://github.com/Rupesh528/ContestBuddy}{GitHub}}} $|$ \textbf{\underline{\href{https://rupesh528.github.io/ContestBuddy/}{Live Demo}}}}
-\resumeItemListStart
-\resumeItem{Built a cross-platform  reminder app aggregating contests from various coding websites like \textbf{Codeforces, LeetCode, CodeChef, AtCoder}}
-\resumeItem{Implemented streak tracking, \textbf{custom notifications}, and performance analytics dashboard for user productivity}
-\resumeItem{Developed backend \textbf{REST API} with \textbf{MongoDB} to store contest data and user preferences}
-\resumeItemListEnd
+			.fade-in {
+				opacity: 0;
+				transform: translateY(30px);
+				animation: fadeInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+			}
 
-%==================== Sentiment Analysis ====================%
-% \resumeProjectHeading
-% {\textbf{Sentiment Analysis using Transformers} $|$ \emph{Python, PyTorch, HuggingFace, BERT}}
-% {\textbf{\underline{\href{https://github.com/Rupesh528/Sentiment-analysis}{GitHub}}}}
-% \resumeItemListStart
-% \resumeItem{Fine-tuned \textbf{BERT} transformer achieving \textbf{92\% accuracy} for sentiment classification}
-% \resumeItem{Applied \textbf{tokenization}, \textbf{attention mechanisms}, and transformer-based \textbf{transfer learning}}
-% \resumeItem{Built training pipeline using \textbf{PyTorch} and \textbf{HuggingFace Transformers}}
-% \resumeItemListEnd
+			.delay {
+				animation-delay: 0.1s;
+			}
+			.delay2 {
+				animation-delay: 0.2s;
+			}
+			.delay3 {
+				animation-delay: 0.3s;
+			}
+			.delay4 {
+				animation-delay: 0.4s;
+			}
+			.delay5 {
+				animation-delay: 0.5s;
+			}
+			.delay6 {
+				animation-delay: 0.6s;
+			}
+			.delay7 {
+				animation-delay: 0.7s;
+			}
+			.delay8 {
+				animation-delay: 0.8s;
+			}
+			.delay9 {
+				animation-delay: 0.9s;
+			}
 
-\resumeProjectHeading
-{\textbf{Custom Shell} $|$ \emph{C++, STL, OOP, Linux}}
-{\raisebox{-0.2em}{\includegraphics[height=1em]{github-logo.png}} \underline{\textbf{\href{https://github.com/Rupesh528/custom-shell}{GitHub}}}}
-\resumeItemListStart
-\resumeItem{Developed a high-performance \textbf{Custom Shell} using \textbf{C++}, leveraging \textbf{OOP}, templates, and \textbf{STL} to replicate core Unix shell behavior}
-\resumeItem{Implemented core utilities including \textbf{grep}, \textbf{cat}, process control, piping, and I/O redirection with support for \textbf{100+ concurrent processes}}
-\resumeItem{Optimized execution and memory usage using \textbf{Linux system calls}, \textbf{multithreading}, and GCC compile-time optimizations}
-\resumeItemListEnd
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
 
+			@keyframes pulse {
+				0%,
+				100% {
+					transform: scale(1);
+				}
+				50% {
+					transform: scale(1.05);
+				}
+			}
 
-\resumeSubHeadingListEnd
+			@keyframes glow {
+				0%,
+				100% {
+					box-shadow: 0 0 20px rgba(0, 179, 255, 0.3);
+				}
+				50% {
+					box-shadow: 0 0 30px rgba(0, 179, 255, 0.6);
+				}
+			}
 
+			section {
+				margin-bottom: 50px;
+			}
 
+			.work-status {
+				background: linear-gradient(
+					135deg,
+					rgba(0, 179, 255, 0.15),
+					rgba(0, 179, 255, 0.08)
+				);
+				padding: 25px;
+				border-radius: 15px;
+				border: 2px solid rgba(0, 179, 255, 0.4);
+				text-align: center;
+				margin: 40px 0;
+				position: relative;
+				overflow: hidden;
+			}
 
-%
-%-----------PROGRAMMING SKILLS-----------
-\section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages}{: C, C++ (STLs), Python, Java (Hibernate), JavaScript, TypeScript} \\
-     \textbf{Technologies/Frameworks}{: Node.js, React.js, Express.js, HTML5, CSS3.} \\
-    %  \textbf{AI/ML \& Deep Learning}{: Generative AI \& LLMs, RAG \& Vector Databases, LangChain \& LangGraph, NLP \& Transformers, TensorFlow, PyTorch} \\
-     \textbf{Tools}{: Git, GitHub, Linux OS, Scripting, Docker, AWS} \\
-     \textbf{Databases}{: MySQL, MongoDB} \\
-     \textbf{Core Competencies}{: Object-Oriented Programming (OOP), Data Structures and Algorithms, Competitive Programming} \\
-     \textbf{Coding Profiles}{: \textbf{\underline{\href{https://leetcode.com/u/Rupesh528/}{LeetCode }}}, \textbf{\underline{\href{https://www.codechef.com/users/rupeshsahani24}{CodeChef}}}, \textbf{\underline{\href{https://codeforces.com/profile/Rupesh_7}{CodeForces }}}, \textbf{\underline{\href{https://github.com/Rupesh528}{GitHub}}}, \textbf{\underline{\href{https://www.linkedin.com/in/rupesh-sahani-g06/}{LinkedIn}}}
-    }}
- \end{itemize}
+			.work-status::before {
+				content: "";
+				position: absolute;
+				top: -50%;
+				left: -50%;
+				width: 200%;
+				height: 200%;
+				background: linear-gradient(
+					45deg,
+					transparent,
+					rgba(255, 255, 255, 0.05),
+					transparent
+				);
+				animation: shine 3s infinite;
+			}
 
+			@keyframes shine {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
 
-%-------------------------------------------
-\end{document}
+			.work-status p {
+				margin: 0;
+				font-size: 1.2rem;
+				color: #00d4ff;
+				font-weight: 600;
+				position: relative;
+				z-index: 1;
+			}
+
+			.heatmap-wrapper {
+				background: linear-gradient(
+					135deg,
+					rgba(255, 255, 255, 0.03),
+					rgba(255, 255, 255, 0.01)
+				);
+				padding: 25px;
+				border-radius: 15px;
+				border: 1px solid rgba(255, 255, 255, 0.08);
+				overflow-x: auto;
+				box-shadow: inset 0 0 30px rgba(0, 179, 255, 0.02);
+			}
+
+			.heatmap-grid {
+				display: inline-grid;
+				grid-template-rows: repeat(7, 14px);
+				grid-auto-flow: column;
+				grid-gap: 4px;
+				margin: 15px 0;
+				justify-content: flex-end;
+			}
+
+			.heatmap-day {
+				width: 14px;
+				height: 14px;
+				border-radius: 3px;
+				cursor: pointer;
+				transition: all 0.2s;
+			}
+
+			.heatmap-day[data-level="0"] {
+				background: rgba(255, 255, 255, 0.05);
+			}
+			.heatmap-day[data-level="1"] {
+				background: rgba(0, 179, 255, 0.3);
+			}
+			.heatmap-day[data-level="2"] {
+				background: rgba(0, 179, 255, 0.5);
+			}
+			.heatmap-day[data-level="3"] {
+				background: rgba(0, 179, 255, 0.7);
+			}
+			.heatmap-day[data-level="4"] {
+				background: rgba(0, 179, 255, 1);
+				box-shadow: 0 0 8px rgba(0, 179, 255, 0.5);
+			}
+
+			.heatmap-day:hover {
+				transform: scale(1.3);
+				z-index: 10;
+				box-shadow: 0 0 10px rgba(0, 179, 255, 0.6);
+			}
+
+			.heatmap-legend {
+				display: flex;
+				align-items: center;
+				gap: 6px;
+				margin-top: 20px;
+				font-size: 0.8rem;
+				color: #999;
+			}
+
+			.legend-box {
+				width: 14px;
+				height: 14px;
+				border-radius: 3px;
+			}
+
+			.error {
+				color: #ff6b6b;
+				padding: 15px;
+				font-size: 0.95rem;
+				background: rgba(255, 107, 107, 0.1);
+				border-radius: 8px;
+				border: 1px solid rgba(255, 107, 107, 0.3);
+			}
+
+			.loading {
+				color: #999;
+				font-style: italic;
+				padding: 15px;
+			}
+
+			.tooltip {
+				position: fixed;
+				background: rgba(0, 0, 0, 0.95);
+				color: white;
+				padding: 10px 15px;
+				border-radius: 8px;
+				font-size: 0.85rem;
+				pointer-events: none;
+				z-index: 10000;
+				display: none;
+				border: 1px solid rgba(0, 179, 255, 0.5);
+				box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+			}
+
+			.coding-profiles {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+				gap: 20px;
+				margin-top: 25px;
+			}
+
+			.profile-card {
+				background: linear-gradient(
+					135deg,
+					rgba(0, 179, 255, 0.1),
+					rgba(0, 179, 255, 0.05)
+				);
+				padding: 25px;
+				border-radius: 15px;
+				border: 1px solid rgba(0, 179, 255, 0.2);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 10px;
+				transition: all 0.4s;
+				cursor: pointer;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.profile-card::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					135deg,
+					rgba(0, 179, 255, 0.2),
+					transparent
+				);
+				opacity: 0;
+				transition: opacity 0.4s;
+			}
+
+			.profile-card:hover::before {
+				opacity: 1;
+			}
+
+			.profile-card:hover {
+				transform: translateY(-8px) scale(1.02);
+				box-shadow: 0 10px 40px rgba(0, 179, 255, 0.3);
+				border-color: rgba(0, 179, 255, 0.6);
+			}
+
+			.profile-icon {
+				font-size: 2.5rem;
+				margin-bottom: 5px;
+				position: relative;
+				z-index: 1;
+			}
+
+			.profile-name {
+				font-size: 1.2rem;
+				font-weight: 600;
+				color: #00d4ff;
+				position: relative;
+				z-index: 1;
+			}
+
+			.profile-stat {
+				font-size: 0.95rem;
+				color: #999;
+				position: relative;
+				z-index: 1;
+			}
+
+			/* Tech Stack Styles - Now with simple link styling */
+			.tech-stack {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				margin-top: 15px;
+			}
+
+			.tech-badge {
+				color: #00d4ff;
+				font-size: 0.95rem;
+				transition: all 0.3s;
+			}
+
+			.tech-badge:hover {
+				color: #00d4ff;
+			}
+
+			/* Project Links - Now with badge styling */
+			.project-links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 12px;
+				margin-top: 15px;
+			}
+
+			.project-link {
+				background: linear-gradient(
+					135deg,
+					rgba(0, 179, 255, 0.15),
+					rgba(0, 179, 255, 0.08)
+				);
+				border: 1px solid rgba(0, 179, 255, 0.35);
+				color: #00d4ff;
+				padding: 8px 16px;
+				border-radius: 20px;
+				font-size: 0.88rem;
+				font-weight: 500;
+				letter-spacing: 0.5px;
+				transition: all 0.3s ease;
+				position: relative;
+				overflow: hidden;
+				box-shadow: 0 2px 8px rgba(0, 179, 255, 0.1);
+				text-decoration: none;
+				display: inline-block;
+			}
+
+			.project-link::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					90deg,
+					transparent,
+					rgba(255, 255, 255, 0.2),
+					transparent
+				);
+				transition: left 0.5s;
+			}
+
+			.project-link:hover::before {
+				left: 100%;
+			}
+
+			.project-link:hover {
+				background: linear-gradient(135deg, #00b3ff, #00d4ff);
+				color: #000;
+				border-color: #00d4ff;
+				box-shadow: 0 0 20px rgba(0, 179, 255, 0.6),
+					0 0 40px rgba(0, 179, 255, 0.3);
+				transform: translateY(-3px) scale(1.08);
+			}
+
+			@media (max-width: 768px) {
+				.page-border {
+					top: 10px;
+					left: 10px;
+					right: 10px;
+					bottom: 10px;
+					border-radius: 20px;
+				}
+
+				h1 {
+					font-size: 2.5rem;
+				}
+
+				.container {
+					padding: 40px 20px;
+				}
+
+				.coding-profiles {
+					grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+				}
+
+				.profile-icon img {
+					width: 40px;
+					height: 40px;
+					object-fit: contain;
+				}
+
+				.project-link {
+					font-size: 0.85rem;
+					padding: 7px 14px;
+				}
+
+				.skills {
+					grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+					gap: 10px;
+				}
+
+				.skill {
+					padding: 10px 15px;
+					font-size: 0.9rem;
+				}
+
+				.project {
+					padding: 20px;
+				}
+
+				.project h3 {
+					font-size: 1.2rem;
+				}
+
+				.heatmap-wrapper {
+					padding: 15px;
+					overflow-x: auto;
+					-webkit-overflow-scrolling: touch;
+				}
+
+				.heatmap-grid {
+					grid-gap: 3px;
+				}
+
+				.heatmap-day {
+					width: 12px;
+					height: 12px;
+				}
+
+				.legend-box {
+					width: 12px;
+					height: 12px;
+				}
+			}
+
+			@media (max-width: 480px) {
+				h1 {
+					font-size: 2rem;
+				}
+
+				.subtitle {
+					font-size: 1.1rem;
+				}
+
+				.socials {
+					flex-direction: column;
+					align-items: center;
+					gap: 15px;
+				}
+
+				.socials a {
+					width: 100%;
+					max-width: 200px;
+					text-align: center;
+				}
+
+				.coding-profiles {
+					grid-template-columns: 1fr;
+				}
+
+				.profile-card {
+					padding: 20px;
+				}
+
+				.work-status {
+					padding: 20px;
+				}
+
+				.work-status p {
+					font-size: 1.1rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page-border"></div>
+		<div class="background-gradient"></div>
+		<div class="tooltip" id="tooltip"></div>
+
+		<div class="container">
+			<header>
+				<h1 class="fade-in">Rupesh Sahani</h1>
+				<p class="subtitle fade-in delay">
+					Developer & Machine Learning Enthusiast
+				</p>
+				<div class="socials fade-in delay2">
+					<a href="mailto:sahanirupesh528@gmail.com">📧 Email</a>
+					<a href="https://linkedin.com/in/rupesh-sahani-g06" target="_blank"
+						>💼 LinkedIn</a
+					>
+					<a href="https://github.com/Rupesh528" target="_blank">💻 GitHub</a>
+					<a href="https://leetcode.com/u/Rupesh528/" target="_blank"
+						>🔥 LeetCode</a
+					>
+				</div>
+			</header>
+
+			<section class="fade-in delay3">
+				<h2>About</h2>
+				<p>
+					I'm a developer and machine learning enthusiast passionate about
+					solving real-world problems through clean and scalable code. I enjoy
+					creating data-driven and full-stack applications — from intelligent
+					systems to tools that make life easier. My core strengths lie in
+					Python, C++, and modern web technologies.
+				</p>
+			</section>
+
+			<section class="fade-in delay4">
+				<!-- <h2>Resume</h2> -->
+				<p>
+					Resume :
+					<a
+						href="https://drive.google.com/file/d/1KgLUdXimxy0GHEK-34kwhc9W9KIgc6c0/view?usp=sharing"
+						target="_blank"
+						>click here</a
+					>
+				</p>
+			</section>
+
+			<section class="fade-in delay4">
+				<h2>Skills</h2>
+				<div class="skills">
+					<div class="skill">C</div>
+					<div class="skill">C++ (STL)</div>
+					<div class="skill">Python</div>
+					<div class="skill">JavaScript</div>
+					<div class="skill">Node.js</div>
+					<div class="skill">React.js</div>
+					<div class="skill">Express.js</div>
+					<div class="skill">Flask</div>
+					<div class="skill">HTML5</div>
+					<div class="skill">CSS3</div>
+					<div class="skill">Bootstrap</div>
+					<div class="skill">MySQL</div>
+					<div class="skill">MongoDB</div>
+					<div class="skill">Git</div>
+					<div class="skill">Linux</div>
+					<div class="skill">LLM's</div>
+					<div class="skill">RAG</div>
+					<div class="skill">LangChain</div>
+				</div>
+			</section>
+
+			<div class="work-status fade-in delay5">
+				<p>🚀 Open to Work - Remote & Onsite Opportunities</p>
+			</div>
+
+			<section class="fade-in delay6">
+				<h2>Codeforces Activity</h2>
+				<div class="heatmap-wrapper">
+					<div id="codeforces-heatmap" class="loading">
+						Loading Codeforces activity...
+					</div>
+				</div>
+			</section>
+
+			<section class="fade-in delay7">
+				<h2>Coding Profiles</h2>
+				<div class="coding-profiles">
+					<div
+						class="profile-card"
+						onclick="window.open('https://leetcode.com/u/Rupesh528/', '_blank')"
+					>
+						<div class="profile-icon">
+							<img src="assets/images/leetcode.png" alt="LeetCode" />
+						</div>
+						<div class="profile-name">LeetCode</div>
+						<div class="profile-stat">Rupesh528</div>
+					</div>
+
+					<div
+						class="profile-card"
+						onclick="window.open('https://www.codechef.com/users/rupesh_sahani', '_blank')"
+					>
+						<div class="profile-icon">
+							<img src="assets/images/codechef.png" alt="CodeChef" />
+						</div>
+						<div class="profile-name">CodeChef</div>
+						<div class="profile-stat">sahanirupesh528</div>
+					</div>
+
+					<div
+						class="profile-card"
+						onclick="window.open('https://codeforces.com/profile/Rupesh_7', '_blank')"
+					>
+						<div class="profile-icon">
+							<img src="assets/images/codeforces.png" alt="CodeForces" />
+						</div>
+						<div class="profile-name">CodeForces</div>
+						<div class="profile-stat">Rupesh_7</div>
+					</div>
+
+					<div
+						class="profile-card"
+						onclick="window.open('https://github.com/Rupesh528', '_blank')"
+					>
+						<div class="profile-icon">
+							<img src="assets/images/github.png" alt="GitHub" />
+						</div>
+						<div class="profile-name">GitHub</div>
+						<div class="profile-stat">Rupesh528</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="fade-in delay8">
+				<h2>Projects</h2>
+
+				<div class="project">
+					<h3>Online Auction App</h3>
+					<p>
+						A full-stack web application for conducting online auctions with
+						user authentication, real-time bidding, and comprehensive dashboard
+						analytics. Features secure JWT-based login, auction creation and
+						management, bidding history, dark/light theme toggle, and responsive
+						design.
+					</p>
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">React 19</span> •
+						<span class="tech-badge">TypeScript</span> •
+						<span class="tech-badge">Node.js</span> •
+						<span class="tech-badge">Express.js</span> •
+						<span class="tech-badge">MongoDB</span> •
+						<span class="tech-badge">JWT</span> •
+						<span class="tech-badge">Bootstrap 5</span>
+					</div>
+					<div class="project-links">
+						<a
+							href="https://github.com/Rupesh528/online-auction-system"
+							target="_blank"
+							class="project-link"
+							>GitHub</a
+						>
+						<a
+							href="https://online-auction-system-mpt8mj3bj-rupesh528s-projects.vercel.app/"
+							target="_blank"
+							class="project-link"
+							>Live</a
+						>
+					</div>
+				</div>
+
+				<div class="project">
+					<h3>ContestBuddy App</h3>
+					<p>
+						A competitive programming reminder app that tracks contests from
+						multiple platforms like Codeforces, CodeChef, and LeetCode. Includes
+						streak maintenance, custom reminders, performance analytics, and
+						motivational streak tracking.
+					</p>
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">Flutter</span> •
+						<span class="tech-badge">Python</span> •
+						<span class="tech-badge">MongoDB</span> •
+						<span class="tech-badge">Android Studio</span>
+					</div>
+					<div class="project-links">
+						<a
+							href="https://github.com/Rupesh528/ContestBuddy"
+							target="_blank"
+							class="project-link"
+							>GitHub</a
+						>
+						<a
+							href="https://rupesh528.github.io/ContestBuddy/"
+							target="_blank"
+							class="project-link"
+							>Live</a
+						>
+					</div>
+				</div>
+
+				<div class="project">
+					<h3>Flight Price Prediction</h3>
+					<p>
+						Machine learning-based web app that predicts flight fares with 85%
+						accuracy. Features a clean Flask UI, data preprocessing (cleaning,
+						encoding, scaling), and performance metrics using MAE, RMSE, and R²
+						scores.
+					</p>
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">Python</span> •
+						<span class="tech-badge">Flask</span> •
+						<span class="tech-badge">Random Forest</span> •
+						<span class="tech-badge">Machine Learning</span>
+					</div>
+					<div class="project-links">
+						<a
+							href="https://github.com/Rupesh528/Flight-Price-Prediction"
+							target="_blank"
+							class="project-link"
+							>GitHub</a
+						>
+						<a
+							href="https://my-ml-app-5nl6.onrender.com"
+							target="_blank"
+							class="project-link"
+							>Live</a
+						>
+					</div>
+				</div>
+
+				<div class="project">
+					<h3>Sentiment Analysis using Transformers</h3>
+					<p>
+						Built a sentiment classification model using pre-trained BERT
+						transformers with 92% accuracy. Fine-tuned models using PyTorch and
+						HuggingFace libraries with an advanced NLP preprocessing pipeline.
+					</p>
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">Python</span> •
+						<span class="tech-badge">PyTorch</span> •
+						<span class="tech-badge">HuggingFace</span> •
+						<span class="tech-badge">BERT</span> •
+						<span class="tech-badge">NLP</span>
+					</div>
+					<div class="project-links">
+						<a
+							href="https://github.com/Rupesh528/Sentiment-analysis"
+							target="_blank"
+							class="project-link"
+							>GitHub</a
+						>
+					</div>
+				</div>
+
+				<div class="project">
+					<h3>Custom Shell (C++)</h3>
+					<p>
+						A custom Linux shell built using C++ OOP concepts, STL, and
+						templates. Optimized for concurrent process handling, system command
+						execution, and modular scalability for future extensions.
+					</p>
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">C++</span> •
+						<span class="tech-badge">STL</span> •
+						<span class="tech-badge">OOP</span> •
+						<span class="tech-badge">Linux</span>
+					</div>
+					<div class="project-links">
+						<a
+							href="https://github.com/Rupesh528/custom-shell"
+							target="_blank"
+							class="project-link"
+							>GitHub</a
+						>
+						<a
+							href="https://redesigned-guide-wpjgvj76q5f95x7-7681.app.github.dev/"
+							target="_blank"
+							class="project-link"
+							>Live</a
+						>
+					</div>
+				</div>
+
+				<div class="project">
+					<h3>Contact Search List</h3>
+					<p>
+						A MERN-based contact management app with regex search and real-time
+						updates. Allows adding, editing, and deleting contacts with a
+						responsive, modern interface.
+					</p>
+					<div class="tech-stack">
+						<strong>Tech Stack:</strong>
+						<span class="tech-badge">MongoDB</span> •
+						<span class="tech-badge">Express.js</span> •
+						<span class="tech-badge">React.js</span> •
+						<span class="tech-badge">Node.js</span>
+					</div>
+					<div class="project-links">
+						<a
+							href="https://github.com/Rupesh528/Contact-Search-List"
+							target="_blank"
+							class="project-link"
+							>GitHub</a
+						>
+					</div>
+				</div>
+			</section>
+
+			<footer class="fade-in delay9">
+				<p>© 2025 Rupesh Sahani • Built with ❤️ using HTML & CSS</p>
+			</footer>
+		</div>
+
+		<script>
+			const tooltip = document.getElementById("tooltip");
+
+			function showTooltip(e, text) {
+				tooltip.textContent = text;
+				tooltip.style.display = "block";
+				tooltip.style.left = e.pageX + 10 + "px";
+				tooltip.style.top = e.pageY - 30 + "px";
+			}
+
+			function hideTooltip() {
+				tooltip.style.display = "none";
+			}
+
+			function createGitHubStyleHeatmap(containerId, dailyData) {
+				const container = document.getElementById(containerId);
+
+				if (!dailyData || Object.keys(dailyData).length === 0) {
+					container.innerHTML =
+						'<div class="error">No activity data available</div>';
+					return;
+				}
+
+				const today = new Date();
+				const startDate = new Date(today);
+				startDate.setDate(today.getDate() - 52 * 7);
+
+				const dayOffset = startDate.getDay();
+				startDate.setDate(startDate.getDate() - dayOffset);
+
+				const values = Object.values(dailyData);
+				const maxValue = Math.max(...values, 1);
+
+				const grid = document.createElement("div");
+				grid.className = "heatmap-grid";
+
+				let currentDate = new Date(startDate);
+				const endDate = new Date(today);
+				endDate.setDate(today.getDate() + (7 - today.getDay()));
+
+				while (currentDate <= endDate) {
+					const dateStr = currentDate.toISOString().split("T")[0];
+					const value = dailyData[dateStr] || 0;
+
+					let level = 0;
+					if (value > 0) {
+						const percentage = value / maxValue;
+						if (percentage <= 0.25) level = 1;
+						else if (percentage <= 0.5) level = 2;
+						else if (percentage <= 0.75) level = 3;
+						else level = 4;
+					}
+
+					const day = document.createElement("div");
+					day.className = "heatmap-day";
+					day.setAttribute("data-level", level);
+					day.setAttribute("data-date", dateStr);
+					day.setAttribute("data-count", value);
+
+					day.addEventListener("mouseenter", (e) => {
+						const date = e.target.getAttribute("data-date");
+						const count = e.target.getAttribute("data-count");
+						const containerId = e.target
+							.closest(".heatmap-wrapper")
+							.querySelector("div").id;
+						const activityType =
+							containerId === "codeforces-heatmap" ? "solved" : "activities";
+						showTooltip(e, `${date}: ${count} ${activityType}`);
+					});
+
+					day.addEventListener("mouseleave", hideTooltip);
+
+					grid.appendChild(day);
+					currentDate.setDate(currentDate.getDate() + 1);
+				}
+
+				const legend = document.createElement("div");
+				legend.className = "heatmap-legend";
+				legend.innerHTML = `
+					<span>Less</span>
+					<div class="legend-box" data-level="0"></div>
+					<div class="legend-box" data-level="1"></div>
+					<div class="legend-box" data-level="2"></div>
+					<div class="legend-box" data-level="3"></div>
+					<div class="legend-box" data-level="4"></div>
+					<span>More</span>
+				`;
+
+				container.innerHTML = "";
+				container.appendChild(grid);
+				container.appendChild(legend);
+			}
+
+			async function loadCodeforcesHeatmap() {
+				try {
+					const response = await fetch(
+						"https://codeforces.com/api/user.status?handle=Rupesh_7"
+					);
+
+					if (!response.ok) {
+						throw new Error(`HTTP error! status: ${response.status}`);
+					}
+
+					const data = await response.json();
+
+					if (data.status !== "OK") {
+						throw new Error(data.comment || "API returned error status");
+					}
+
+					const dailyData = {};
+
+					data.result.forEach((submission) => {
+						if (submission.verdict === "OK") {
+							const date = new Date(submission.creationTimeSeconds * 1000);
+							const dateStr = date.toISOString().split("T")[0];
+							dailyData[dateStr] = (dailyData[dateStr] || 0) + 1;
+						}
+					});
+
+					createGitHubStyleHeatmap("codeforces-heatmap", dailyData);
+				} catch (error) {
+					console.error("Codeforces error:", error);
+					const container = document.getElementById("codeforces-heatmap");
+					container.innerHTML = `<div class="error">Failed to load Codeforces data: ${error.message}</div>`;
+				}
+			}
+
+			document.addEventListener("DOMContentLoaded", () => {
+				loadCodeforcesHeatmap();
+			});
+		</script>
+	</body>
+</html>
